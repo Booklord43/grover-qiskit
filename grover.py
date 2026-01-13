@@ -12,13 +12,13 @@ for qubit in range(n):
     qc.h(qubit)
 
 # Step 2: Oracle marking |101>
-qc.x(1)        # flip bit 1 (because target is 101 -> bit1 = 0)
+qc.x(1)        # mapping |101> to |111> so we can apply ccz
 
 qc.h(2)
 qc.ccx(0, 1, 2)  # h+ccx+h is the equivalent of ccz bit flip is converted to phase flip
 qc.h(2) 
 
-qc.x(1)
+qc.x(1) #bit flip 1 to 0 so it becomes -|101>
 
 # Step 3: Diffusion operator
 def diffusion(qc, n):
